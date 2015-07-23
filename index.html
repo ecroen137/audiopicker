@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <script src="js/jquery-1.10.3.js">
+        </script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <style>
+        
+            .menu-container ul {
+                list-style-type : none;
+            }
+            .menu-container ul li {
+                width : 100px;
+                padding : 5px;
+                border : #000 solid 1px;
+            }
+            .audio-player-container {
+                width: 310px;
+                
+                ;
+                
+            }
+            
+            audio {
+                
+                opacity: 0.4;
+                padding: 50% 0 90% 0;
+                background-image: url("http://d236bkdxj385sg.cloudfront.net/wp-content/uploads/2012/04/Martin-Lawrence-net-worth.jpg");
+                background-repeat: no-repeat;
+                
+            }
+           
+            
+      /*      
+            
+            body {
+  padding: 1rem 3rem;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box !important;
+}
+
+h1 {
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 100;
+  max-width: 40rem;
+  margin: 1em auto;
+}
+
+code {
+  font-family: Consolas, "Bitstream Vera Sans Mono", "Andale Mono", Monaco, "DejaVu Sans Mono", "Lucida Console", monospace;
+}
+
+p {
+  max-width: 40rem;
+  margin: 1rem auto;
+}
+
+a {
+  color: #7cc0cb;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+}
+
+span {
+  display: block;
+  color: #7cc0cb;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 1rem;
+}
+
+:before, :after {
+  display: block;
+  content: "";
+  position: absolute;
+}
+
+.play, .pause {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  clear: both;
+}
+
+.play:before {
+  border-top: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid transparent;
+  border-left: 0.625rem solid #7cc0cb;
+  margin: 0.375rem 0 0 0.5rem;
+}
+
+.pause:before {
+  background: #7cc0cb;
+  margin: 0.4375rem 0.125rem 0 0.4375rem;
+  width: 0.25rem;
+  height: 0.625rem;
+}
+
+.pause:after {
+  background: #7cc0cb;
+  margin: 0.4375rem 0.125rem 0 0.8125rem;
+  width: 0.25rem;
+  height: 0.625rem;
+}
+
+   */         
+            
+        </style>
+    </head>
+    <body>
+        <div class="menu-container">
+            
+        </div> 
+        
+        <div class="audio-player-container">
+            
+        </div>
+        
+    
+    <script>
+    
+        function generateMenu(obj) {
+            
+            var menu = "<ul>";
+            for(var i = 0; i < obj.audio.length; i++){
+                console.log(obj.audio[i].title);
+                menu += "<li><a href='" + obj.audio[i].link + "'>" + obj.audio[i].title + "</a></li>";    
+            }
+            menu += "</ul>";
+            
+            $(".menu-container").html(menu);
+            
+            $(".menu-container ul li").css({
+                color: obj.audio.title
+            });
+            
+            $(".menu-container ul li").mouseover(function(){
+                $(this).css("background-color", obj.audio[0].hover);
+            });
+            
+            $(".menu-container ul li").mouseout(function(){
+                $(this).css("background-color", "#fff");
+            });
+                            
+            $( ".menu-container ul li a" ).click(function(event) {
+                //
+                event.preventDefault();
+                var href = $(this).attr("href");
+                
+                $(".audio-player-container").html( "<audio controls><source src='" + href + "' type='audio/mpeg'> </audio>") ;
+                
+                   /* $(function() {
+                         $("audio + a").click(function(e) {
+                           e.preventDefault();
+                           var song = $(this).prev('audio').get(0);
+                           
+                           if (song.paused) {
+                             song.play();
+                    //         $(this).text("❙ ❙");
+                             $(this).addClass("pause");
+                             $(this).removeClass("play");
+                           } 
+                           else {
+                             song.pause();
+                    //         $(this).text("▶");
+                             $(this).addClass("play");
+                             $(this).removeClass("pause");
+                           }
+                         });
+                   });*/
+                
+            });   
+        }
+    
+    
+    
+        $.get("audio.json", function(data){
+            generateMenu(data);    
+        });
+        
+        
+          
+
+                
+      /*          
+
+     $(".myLink").click(function(event){
+      event.preventDefault();
+      console.log($(this).attr("href"));
+});
+      
+*/
+
+   
+
+    </script>
+</html>
+
+
+
