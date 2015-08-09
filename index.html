@@ -7,15 +7,21 @@
             
             body {
                 background-image: url("moondog2.png");
-                background-position: center;
+                background-position: center top;
             }
         
             #wrapper {
                 max-width: 500px;
-                margin: 0 auto;
-                border-radius: 20px;
+                margin: 20px auto;
+                border-radius: 50%;
                 background-color: #6B0000;
                 opacity: 0.7;
+                
+            }
+            
+            .menu-container {
+                height: 300px;
+                overflow: hidden;
             }
         
             .menu-container ul {
@@ -25,11 +31,17 @@
             
             .menu-container ul li {
                 width: 80%;
+                height: 300px;
                 padding: 10%;
                 text-align: center;
                 border-bottom: 1px dotted white;
                 list-style: none;
                 text-decoration: none;
+                display: hidden !important;
+            }
+            
+            .menu-container ul li:first-child {
+                display: block;
             }
             
             .menu-container ul li a {
@@ -47,13 +59,13 @@
             
             .band {
                 font-size: 2em;
-                line-height: 1.8em;
+                line-height: 1.1em;
                 color: deepskyblue;
             }
             
             .song {
                 font-size: 1.7em;
-                line-height: 1.5em;
+                line-height: 0.8em;
                 font-style: italic;
                 color: yellow;
             }
@@ -62,6 +74,7 @@
             .audio-player-container {
                 width: 310px;
                 margin: 0 auto;
+                padding: 10% 0;
             }
             
             audio {
@@ -72,13 +85,77 @@
                 border-radius: 50%;
             }
            
+           #arrows {
+               width: 50%;
+               margin: 0 auto;
+               font-size: 2.5em;
+           }
+           
+           #arrows ul {
+               padding: 0;
+           }
+           
+           #arrows ul li {
+               float: left;
+               padding: 10%;
+               width: 30%;
+               text-align: center;
+               font-size: 2.5 em;
+           }
+           
+           #arrows a {
+               color: white;
+               
+           }
+           
+           .group:after {
+            	visibility: hidden;
+            	display: block;
+            	content: "";
+            	clear: both;
+            	height: 0;
+            }
+            
+            
+            
+            
+            @media screen and (max-width: 500px) {
+                .band {
+                    font-size: 1.6em;
+                    line-height: 0.9em;
+                    color: deepskyblue;
+                }
+                
+                .song {
+                    font-size: 1.3em;
+                    line-height: 0.8em;
+                    font-style: italic;
+                    color: yellow;
+                }
+            }
+            
        
             
         </style>
     </head>
     <body>
         <div id="wrapper">
-            <div class="menu-container">
+            <div id="arrows">
+                <ul class="group">
+                    <li>
+                        <a href="#" class="control_prev"> 
+                            << 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="control_next"> 
+                            >> 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="menu-container" id="slider">
                 
             </div> 
             
@@ -94,7 +171,7 @@
             var menu = "<ul>";
             for(var i = 0; i < obj.audio.length; i++){
                 console.log(obj.audio[i].title);
-                menu += "<li><a href='" + obj.audio[i].link + "'>" + obj.audio[i].title + "</a></li>";    
+                menu += "<li><a href='" + obj.audio[i].link + "' class='playme'>" + obj.audio[i].title + " </a></li>";    
             }
             menu += "</ul>";
             
@@ -123,25 +200,7 @@
                 
                 $(".audio-player-container").html( "<audio controls><source src='" + href + "' type='audio/mpeg'> </audio>") ;
                 
-                   /* $(function() {
-                         $("audio + a").click(function(e) {
-                           e.preventDefault();
-                           var song = $(this).prev('audio').get(0);
-                           
-                           if (song.paused) {
-                             song.play();
-                    //         $(this).text("❙ ❙");
-                             $(this).addClass("pause");
-                             $(this).removeClass("play");
-                           } 
-                           else {
-                             song.pause();
-                    //         $(this).text("▶");
-                             $(this).addClass("play");
-                             $(this).removeClass("pause");
-                           }
-                         });
-                   });*/
+                   
                 
             });   
         }
@@ -153,19 +212,69 @@
         });
         
         
-          
+        
+        jQuery(document).ready(function($) {
 
-                
-      /*          
+              $('#checkbox').change(function() {
+                setInterval(function() {
+                  moveRight();
+                }, 3000);
+              });
+            
+              var slideCount = $('#slider ul li').length;
+              var slideWidth = $('#slider ul li').width();
+              var slideHeight = $('#slider ul li').height();
+              var sliderUlWidth = slideCount * slideWidth;
+            
+              $('#slider').css({
+                width: slideWidth,
+                height: slideHeight
+              });
+            
+              $('#slider ul').css({
+                width: sliderUlWidth,
+                marginLeft: -slideWidth
+              });
+            
+              $('#slider ul li:last-child').prependTo('#slider ul');
+            
+              function moveLeft() {
+                $('#slider ul').animate({
+                  left: +slideWidth
+                }, 200, function() {
+                  $('#slider ul li:last-child').prependTo('#slider ul');
+                  $('#slider ul').css('left', '');
+                });
+              };
+            
+              function moveRight() {
+                $('#slider ul').animate({
+                  left: -slideWidth
+                }, 200, function() {
+                  $('#slider ul li:first-child').appendTo('#slider ul');
+                  $('#slider ul').css('left', '');
+                });
+              };
+            
+              $('a.control_prev').click(function() {
+                moveLeft();
+               $(".audio-player-container").css("display","none");
+              });
+            
+              $('a.control_next').click(function() {
+                moveRight();
+                $(".audio-player-container").css("display","none");
+              });
+            
+            });
 
-     $(".myLink").click(function(event){
-      event.preventDefault();
-      console.log($(this).attr("href"));
-});
-      
-*/
+           
+            
+            $(".playme").click(function(){
+                $(".audio-player-container").css("display","block");
+            });
 
-   
+               
 
     </script>
 </html>
