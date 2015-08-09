@@ -2,6 +2,8 @@
     <head>
         <script src="js/jquery-1.10.3.js">
         </script>
+        <script src="js/main.js">
+        </script>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <style>
             
@@ -32,7 +34,7 @@
             .menu-container ul li {
                 width: 80%;
                 height: 300px;
-                padding: 10%;
+                padding: 0 10% 10% 10%;
                 text-align: center;
                 border-bottom: 1px dotted white;
                 list-style: none;
@@ -40,9 +42,11 @@
                 display: hidden !important;
             }
             
+            /*
             .menu-container ul li:first-child {
                 display: block;
             }
+            */
             
             .menu-container ul li a {
                 color: #D7D7D7;
@@ -116,7 +120,9 @@
             	height: 0;
             }
             
-            
+            .hidden {
+                display: none;
+            }
             
             
             @media screen and (max-width: 500px) {
@@ -159,124 +165,13 @@
                 
             </div> 
             
-            <div class="audio-player-container">
+            <div class="audio-player-container hidden">
                 
+            
             </div>
         </div>
     
-    <script>
-    
-        function generateMenu(obj) {
-            
-            var menu = "<ul>";
-            for(var i = 0; i < obj.audio.length; i++){
-                console.log(obj.audio[i].title);
-                menu += "<li><a href='" + obj.audio[i].link + "' class='playme'>" + obj.audio[i].title + " </a></li>";    
-            }
-            menu += "</ul>";
-            
-            $(".menu-container").html(menu);
-            
-            $(".menu-container ul li").css({
-                color: obj.audio.title
-            });
-            
-            /*
-            
-            $(".menu-container ul li").mouseover(function(){
-                $(this).css("background-color", obj.audio[0].hover);
-            });
-            
-            $(".menu-container ul li").mouseout(function(){
-                $(this).css("background-color", "#fff");
-            });
-            
-            */
-                            
-            $( ".menu-container ul li a" ).click(function(event) {
-                //
-                event.preventDefault();
-                var href = $(this).attr("href");
-                
-                $(".audio-player-container").html( "<audio controls><source src='" + href + "' type='audio/mpeg'> </audio>") ;
-                
-                   
-                
-            });   
-        }
-    
-    
-    
-        $.get("audio.json", function(data){
-            generateMenu(data);    
-        });
-        
-        
-        
-        jQuery(document).ready(function($) {
-
-              $('#checkbox').change(function() {
-                setInterval(function() {
-                  moveRight();
-                }, 3000);
-              });
-            
-              var slideCount = $('#slider ul li').length;
-              var slideWidth = $('#slider ul li').width();
-              var slideHeight = $('#slider ul li').height();
-              var sliderUlWidth = slideCount * slideWidth;
-            
-              $('#slider').css({
-                width: slideWidth,
-                height: slideHeight
-              });
-            
-              $('#slider ul').css({
-                width: sliderUlWidth,
-                marginLeft: -slideWidth
-              });
-            
-              $('#slider ul li:last-child').prependTo('#slider ul');
-            
-              function moveLeft() {
-                $('#slider ul').animate({
-                  left: +slideWidth
-                }, 200, function() {
-                  $('#slider ul li:last-child').prependTo('#slider ul');
-                  $('#slider ul').css('left', '');
-                });
-              };
-            
-              function moveRight() {
-                $('#slider ul').animate({
-                  left: -slideWidth
-                }, 200, function() {
-                  $('#slider ul li:first-child').appendTo('#slider ul');
-                  $('#slider ul').css('left', '');
-                });
-              };
-            
-              $('a.control_prev').click(function() {
-                moveLeft();
-               $(".audio-player-container").css("display","none");
-              });
-            
-              $('a.control_next').click(function() {
-                moveRight();
-                $(".audio-player-container").css("display","none");
-              });
-            
-            });
-
-           
-            
-            $(".playme").click(function(){
-                $(".audio-player-container").css("display","block");
-            });
-
-               
-
-    </script>
+ 
 </html>
 
 
