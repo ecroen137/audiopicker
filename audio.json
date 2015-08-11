@@ -1,1 +1,15 @@
-{"audio":[{"title":"<span class='band'>the clean:</span> <br /> <span class='song'>beatnik</span>","link":"audio/beatnik.m4a"},{"title":"<span class='band'>the victims: </span> <br /> <span class='song'>flipped out over you</span>","link":"audio/flipped-out-over-you.mp3"},{"title":"<span class='band'>the dirtbombs: </span> <br />  <span class='song'>got to give it up</span>","link":"audio/got-to-give-it-up.mp3"},{"title":"<span class='band'>brian jonestown massacre:</span> <br /> <span class='song'>that girl suicide</span>","link":"audio/that-girl-suicide.mp3"}, {"title":"<span class='band'>reigning sound:</span> <br /> <span class='song'>stick up for me</span>","link":"audio/stick-up-for-me.mp3"}, {"title":"<span class='band'>toy love:</span> <br /> <span class='song'>pull down the shades</span>","link":"audio/pull-down-the-shades.mp3"}, {"title":"<span class='band'>spacemen 3: </span> <br /> <span class='song'>walkin with jesus</span>","link":"audio/walkin-with-jesus.mp3"}, {"title":"<span class='band'>ipps:</span> <br /> <span class='song'>yr thick</span>","link":"audio/yr-thick.mp3"}]}
+{"audio":[
+    {"title":"<span class='band'>the clean:</span> <br /> <span class='song'>beatnik</span>","link":"audio/beatnik.m4a"}, 
+    {"title":"<span class='band'>mississippi fred mcdowell:</span> <br /> <span class='song'>dark cloud rising</span>","link":"audio/dark-cloud-rising.mp3"},
+    {"title":"<span class='band'>the victims: </span> <br /> <span class='song'>flipped out over you</span>","link":"audio/flipped-out-over-you.mp3"},
+    {"title":"<span class='band'>the dirtbombs: </span> <br />  <span class='song'>got to give it up</span>","link":"audio/got-to-give-it-up.mp3"},
+    {"title":"<span class='band'>brian jonestown massacre:</span> <br /> <span class='song'>that girl suicide</span>","link":"audio/that-girl-suicide.mp3"}, 
+    {"title":"<span class='band'>reigning sound:</span> <br /> <span class='song'>stick up for me</span>","link":"audio/stick-up-for-me.mp3"}, 
+    {"title":"<span class='band'>alice coltrane:</span> <br /> <span class='song'>journey in satchidananda</span>","link":"audio/journey-in-satchidananda.mp3"}, 
+    {"title":"<span class='band'>toy love:</span> <br /> <span class='song'>pull down the shades</span>","link":"audio/pull-down-the-shades.mp3"}, 
+    {"title":"<span class='band'>spacemen 3: </span> <br /> <span class='song'>walkin with jesus</span>","link":"audio/walkin-with-jesus.mp3"}, 
+    {"title":"<span class='band'>moondog:</span> <br /> <span class='song'>bird's lament</span>","link":"audio/birds-lament.mp3"}, 
+    {"title":"<span class='band'>ipps:</span> <br /> <span class='song'>yr thick</span>","link":"audio/yr-thick.mp3"}, 
+    {"title":"<span class='band'>group inerane:</span> <br /> <span class='song'>ikabkaban</span>","link":"audio/ikabkaban.mp3"}, 
+    {"title":"<span class='band'>neil young:</span> <br /> <span class='song'>come on baby let's go downtown</span>","link":"audio/come-on-baby-lets-go-downtown.mp3"}
+]}
