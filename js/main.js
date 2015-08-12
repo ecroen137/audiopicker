@@ -3,36 +3,26 @@ function generateMenu(obj) {
             var menu = "<ul>";
             for(var i = 0; i < obj.audio.length; i++){
                 console.log(obj.audio[i].title);
-                menu += "<li><a href='" + obj.audio[i].link + "' class='playme'>" + obj.audio[i].title + " </a></li>";    
+                menu += "<li><a href='" + obj.audio[i].link + "' class='playme" + i + "'>" + obj.audio[i].title + " </a></li>";    
             }
             menu += "</ul>";
             
             $(".menu-container").html(menu);
             
-            $(".menu-container ul li").css({
-                color: obj.audio.title
-            });
+           
+             
+           
             
-            /*
-            
-            $(".menu-container ul li").mouseover(function(){
-                $(this).css("background-color", obj.audio[0].hover);
-            });
-            
-            $(".menu-container ul li").mouseout(function(){
-                $(this).css("background-color", "#fff");
-            });
-            
-            */
                             
             $( ".menu-container ul li a" ).click(function(event) {
                 //
                 event.preventDefault();
                 var href = $(this).attr("href");
+                var numb = $(this).attr("class");
                 
-                $(".audio-player-container").html( "<audio controls><source src='" + href + "' type='audio/mpeg'> </audio>") ;
+                $(".audio-player-container").html( "<audio controls class='hh" + numb + "'><source src='" + href +  "' type='audio/mpeg'> </audio>") ;
                 $('.audio-player-container').removeClass('hidden');
-                   
+                     
                 
             });   
         }
